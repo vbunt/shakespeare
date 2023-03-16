@@ -15,7 +15,7 @@
 - ~tfidf + logreg~
 - ~bert~
 - можно svm попробовать какой-нибудь
-- какая-то нейросеть не знаю какая
+- CNN (по [статье](https://pan.webis.de/downloads/publications/papers/sierra_2017.pdf) и по [ириной тетрадке](https://colab.research.google.com/drive/1BGUA1UAVLWTp_A6KJiI8ricUuxj1UUqW?usp=sharing#scrollTo=eZRu4ykFpz_q))
 3. side quests
 - найти простую нейросеть-классификатор
 - кажется код для мл можно взять из домашки аделя
