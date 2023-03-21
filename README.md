@@ -5,9 +5,10 @@
 |bow + logreg           |0.74|||
 |tfidf + logreg         |0.74|||
 |svm                    ||||
+|1-layer perceptron???  ||||
 |CNN                    ||||
 |bert                   |0.80|||
-|longformer             ||||
+|longformer???          ||||
 
 таски
 - возможно надо узнать как можно улучшить классический мл (типа бустинг все дела) возможно это излишне
@@ -25,7 +26,7 @@
 - попробовать однослойный перцептрон (в домашке Семена было)
 - CNN (по [статье](https://pan.webis.de/downloads/publications/papers/sierra_2017.pdf) и по [ириной тетрадке](https://colab.research.google.com/drive/1BGUA1UAVLWTp_A6KJiI8ricUuxj1UUqW?usp=sharing#scrollTo=eZRu4ykFpz_q))
 - для экспериментов вдохновляться [этой статьей](https://pan.webis.de/downloads/publications/papers/rangel_2018.pdf) - типа убрать/оставить стоп слова
-- longformer
+- longformer?
 3. написать, что из этого работает лучше
 
 ### сделать датасет со старыми текстами
