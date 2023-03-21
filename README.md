@@ -6,7 +6,7 @@
 |tfidf + logreg         |0.74|||
 |svm                    ||||
 |1-layer perceptron???  ||||
-|CNN                    ||||
+|CNN                    |0.57|||
 |bert                   |0.80|||
 |longformer???          ||||
 
