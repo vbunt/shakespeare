@@ -2,9 +2,9 @@
 
 | model                 | Doyle & Christie dataset | English letters dataset | Modern dataset|
 |-----------------------|--------------------------|-------------------------|---------------|
-|bow + logreg           |0.74|0.87||
-|tfidf + logreg         |0.74|0.86||
-|svm                    |0.75|0.88||
+|bow + logreg           |0.74|0.87|0.52|
+|tfidf + logreg         |0.74|0.86|0.52|
+|svm                    |0.75|0.88|0.52|
 |siamese                |0.5|0.53||
 |CNN                    |0.57|0.73||
 |bert                   |0.80|0.8||
