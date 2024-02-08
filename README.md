@@ -1,5 +1,46 @@
-# shakespeare
+# Was Shakespeare a Woman?
+(версия на русском ниже)
 
+## Introduction
+
+## Datasets
+1. Doyle & Christie dataset: train: sentences from Doyle and Christies mystery stories, 18k lines; test: sentences from their non-mystery stories, 2k lines; targets are Doyle or Christie.
+3. English letters dataset: train: sentences from letters in Old English [corpus](https://ota.bodleian.ox.ac.uk/repository/xmlui/handle/20.500.12024/2461), 5k lines; test: sentences from the same corpus, 500 lines; targets are male or female. 
+4. Modern dataset: много строк, не сбалансирован. В моделях везде используется сбалансированная версия.
+
+### Preprocessing
+
+## Models
+1. Classic ML: logistic regression + tf-idf, logistic regression + counts of BOW, SVM + tf-idf
+2. ! CNN: эмбеддинги word2vec-google-news-300, фильтры 2, 3, 4
+3. A siamese neural network: the model receives a pair of sentences that are written either by two women, two men or a man and a woman. The targets in this case are 0 for 'written by people of different genders' or 1 for 'written by people of the same gender'. We used pre-trained *word2vec-google-news-300* embeddings. This was a "just for fun" experiment that ended up working very badly. 
+4. BERT: we just fine-tuned *bert-base-cased* model
+
+## Results
+
+| model                 | Doyle & Christie dataset | English letters dataset | Modern dataset|
+|-----------------------|--------------------------|-------------------------|---------------|
+|bow + logreg           |0.74|0.87|0.52|
+|tfidf + logreg         |0.74|0.86|0.52|
+|svm                    |0.75|0.88|0.52|
+|siamese                |0.50|0.53|0.50|
+|CNN                    |0.57|0.73|0.50|
+|bert                   |0.80|0.80|0.51|
+
+## Введение
+
+## Датасеты
+1. Doyle & Christie dataset: 18k строк в трейне, 2k строк в тесте, сбалансированный. В трейне детективы, в тесте не-детективы. 
+2. English letters dataset: ~10k строк, не сбалансирован. В моделях везде используется сбалансированная версия. Там не совсем но пофикшен староанглийский
+3. Modern dataset: много строк, не сбалансирован. В моделях везде используется сбалансированная версия.
+
+## Модели
+1. Классический ML: логистическая регрессия + tf-idf, логистическая регрессия + мешок слов, SVM + tf-idf
+2. ! CNN: эмбеддинги word2vec-google-news-300, фильтры 2, 3, 4
+3. Сиамская нейросеть: модель получает пару предложений, и учится определять, была ли ли они написаны людьми одного пола или разных. Мы использовали готовые эмбеддинги *word2vec-google-news-300*. У нас не было никаких надежд на эту модель, и она их оправдала: всё работало очень плохо.
+4. BERT: мы файн-тюнили модель bert-base-cased
+
+## Результаты
 | model                 | Doyle & Christie dataset | English letters dataset | Modern dataset|
 |-----------------------|--------------------------|-------------------------|---------------|
 |bow + logreg           |0.74|0.87|0.52|
@@ -12,17 +53,3 @@
 ## что произошло
 Мы занимаемся author profiling'ом с целью выяснить, не был ли Шекспир женщиной. Сначала мы попробовали обучить все выбранные модели на детективах Дойля и Кристи и обучить на их же не детективах, чтобы проверить, что модели вообще могут подцепить какие-то стилистические особенности. Потом мы собрали датасет из писем на староанглийском (брать пьесы было нельзя, потому что женщины их не публиковали), чтобы проверять Шекспира на языке Шекспира. Еще мы сделали датасет с современными текстами с надеждой, что хотя бы на нём получится что-то сносное. (Не получилось.)
 
-### мы сделали датасеты
-1. Doyle & Christie dataset: 18k строк в трейне, 2k строк в тесте, сбалансированный. В трейне детективы, в тесте не-детективы. 
-2. English letters dataset: ~10k строк, не сбалансирован. В моделях везде используется сбалансированная версия. Там не совсем но пофикшен староанглийский
-3. Modern dataset: много строк, не сбалансирован. В моделях везде используется сбалансированная версия.
-
-### мы сделали модели
-1. тетрадка Classic ML: логистическая регрессия + tf-idf, логистическая регрессия + мешок слов, SVM + tf-idf
-2. CNN: эмбеддинги word2vec-google-news-300, фильтры 2, 3, 4
-3. siamese: эмбеддинги word2vec-google-news-300
-4. BERT: bert-base-cased, ничего не замораживали
-
-## что произойдет к моменту защит
-1. мы выясним почему некоторые модели работают так, как работают
-2. мы попросим каждую модель, обученную на корпусе писем, посмотреть на 500 сэмплов из шекспира, и по большинству ответов решим, был ли он женщиной (ура вклад в науку) 
