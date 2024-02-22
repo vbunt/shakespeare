@@ -1,14 +1,15 @@
 # Was Shakespeare a Woman?
 (версия на русском ниже)
 
-## Introduction
+## In a nutshell
+Inspired by Elizabeth Winkler’s 2019 article for the Atlantic, this project adds to the centuries-old debate about William Shakespeare’s identity. We trained a variety of models (see Models) on three different corpora. FIrst, to see that models are able to pick up on stylistic differences between authors, we trained models on stories by Arthur Conan Doyle and Agatha Christie, which was successful (see Results). Second, we collected a corpus of modern-day romances from male and female authors, and trained models to distinguish between them, which was less successful. Finally, using a corpus of letters in Old English, we trained models to differentiate between those written by women and those written by men, which was comparatively successful. Using the models trained on the letters corpus, we tried to predict Shakespeare's gender, to inconclusive results. 
 
 ## Datasets
 1. Doyle & Christie dataset: train: sentences from Doyle and Christies mystery stories, 18k lines; test: sentences from their non-mystery stories, 2k lines; targets are Doyle or Christie.
 3. English letters dataset: train: sentences from letters in Old English [corpus](https://ota.bodleian.ox.ac.uk/repository/xmlui/handle/20.500.12024/2461), 5k lines; test: sentences from the same corpus, 500 lines; targets are male or female. 
-4. Modern dataset: много строк, не сбалансирован. В моделях везде используется сбалансированная версия.
+4. Modern dataset: train: sentences from modern romance novels, 50k lines; test: 5k lines; targets are male or female.
 
-### Preprocessing
+### Preprocessing (TBD)
 
 ## Models
 1. Classic ML: logistic regression + tf-idf, logistic regression + counts of BOW, SVM + tf-idf
@@ -18,6 +19,7 @@
 
 ## Results
 
+Accuracy scores:
 | model                 | Doyle & Christie dataset | English letters dataset | Modern dataset|
 |-----------------------|--------------------------|-------------------------|---------------|
 |bow + logreg           |0.74|0.87|0.52|
@@ -27,7 +29,9 @@
 |CNN                    |0.57|0.73|0.50|
 |bert                   |0.80|0.80|0.51|
 
-## Введение
+! Shakespeare scores:
+
+## Введение (в процессе)
 
 ## Датасеты
 1. Doyle & Christie dataset: 18k строк в трейне, 2k строк в тесте, сбалансированный. В трейне детективы, в тесте не-детективы. 
