@@ -1,5 +1,5 @@
 # Was Shakespeare a Woman?
-(версия на русском ниже)
+(версия на русском ниже: TODO)
 
 ## In a nutshell
 Inspired by Elizabeth Winkler’s 2019 article for the Atlantic, this project adds to the centuries-old debate about William Shakespeare’s identity. We trained a variety of models (see Models) on three different corpora. FIrst, to see that models are able to pick up on stylistic differences between authors, we trained models on stories by Arthur Conan Doyle and Agatha Christie, which was successful (see Results). Second, we collected a corpus of modern-day romances from male and female authors, and trained models to distinguish between them, which was less successful. Finally, using a corpus of letters in Old English, we trained models to differentiate between those written by women and those written by men, which was comparatively successful. Using the models trained on the letters corpus, we tried to predict Shakespeare's gender, to inconclusive results. 
@@ -8,9 +8,7 @@ Inspired by Elizabeth Winkler’s 2019 article for the Atlantic, this project ad
 1. Doyle & Christie dataset: train: sentences from Doyle and Christies mystery stories, 18k lines; test: sentences from their non-mystery stories, 2k lines; targets are Doyle or Christie.
 3. English letters dataset: train: sentences from letters in Old English [corpus](https://ota.bodleian.ox.ac.uk/repository/xmlui/handle/20.500.12024/2461), 5k lines; test: sentences from the same corpus, 500 lines; targets are male or female. 
 4. Modern dataset: train: sentences from modern romance novels, 50k lines; test: 5k lines; targets are male or female.
-
-### Preprocessing (TBD)
-
+   
 ## Models
 1. Classic ML: logistic regression + tf-idf, logistic regression + counts of BOW, SVM + tf-idf
 2. CNN: word2vec-google-news-300e embeddings, filters 2, 3, 4
@@ -62,7 +60,3 @@ The scores are very uncertain, so we consider results inconclusive.
 |siamese                |0.50|0.53|0.50|
 |CNN                    |0.57|0.73|0.50|
 |bert                   |0.80|0.80|0.51|
-
-## что произошло
-Мы занимаемся author profiling'ом с целью выяснить, не был ли Шекспир женщиной. Сначала мы попробовали обучить все выбранные модели на детективах Дойля и Кристи и обучить на их же не детективах, чтобы проверить, что модели вообще могут подцепить какие-то стилистические особенности. Потом мы собрали датасет из писем на староанглийском (брать пьесы было нельзя, потому что женщины их не публиковали), чтобы проверять Шекспира на языке Шекспира. Еще мы сделали датасет с современными текстами с надеждой, что хотя бы на нём получится что-то сносное. (Не получилось.)
-
