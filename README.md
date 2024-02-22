@@ -13,7 +13,7 @@ Inspired by Elizabeth Winkler’s 2019 article for the Atlantic, this project ad
 
 ## Models
 1. Classic ML: logistic regression + tf-idf, logistic regression + counts of BOW, SVM + tf-idf
-2. ! CNN: эмбеддинги word2vec-google-news-300, фильтры 2, 3, 4
+2. CNN: word2vec-google-news-300e embeddings, filters 2, 3, 4
 3. A siamese neural network: the model receives a pair of sentences that are written either by two women, two men or a man and a woman. The targets in this case are 0 for 'written by people of different genders' or 1 for 'written by people of the same gender'. We used pre-trained *word2vec-google-news-300* embeddings. This was a "just for fun" experiment that ended up working very badly. 
 4. BERT: we just fine-tuned *bert-base-cased* model
 
@@ -29,7 +29,16 @@ Accuracy scores:
 |CNN                    |0.57|0.73|0.50|
 |bert                   |0.80|0.80|0.51|
 
-! Shakespeare scores:
+Shakespeare scores:
+| model                 |Logit Score|Decision|
+|-----------------------|-----|--------|
+|bow + logreg           |0.5| ? |
+|tfidf + logreg         |0.45| female |
+|svm                    |0.48|female|
+|CNN                    |0.55|male|
+|bert                   |0.38|female|
+
+The scores are very uncertain, so we consider results inconclusive.
 
 ## Введение (в процессе)
 
